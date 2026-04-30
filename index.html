@@ -17,6 +17,21 @@
         <div class="block block-b"></div>
         <div class="block block-c"></div>
         <div class="block block-d"></div>
+        <div class="road road-yellow road-yellow-a" aria-hidden="true"></div>
+        <div class="road road-yellow road-yellow-b" aria-hidden="true"></div>
+        <div class="subway-line" aria-hidden="true"></div>
+        <div class="map-station" aria-hidden="true">강남구청역</div>
+        <span class="station-dot station-dot-a" aria-hidden="true">1</span>
+        <span class="station-dot station-dot-b" aria-hidden="true">7</span>
+        <span class="station-dot station-dot-c" aria-hidden="true">3</span>
+        <span class="map-label label-a" aria-hidden="true">논현2동</span>
+        <span class="map-label label-b" aria-hidden="true">선정릉</span>
+        <span class="map-label label-c" aria-hidden="true">라온제나</span>
+        <span class="map-label label-d" aria-hidden="true">강남구보건소</span>
+        <span class="map-label label-e" aria-hidden="true">논현초나무공원</span>
+        <span class="map-poi poi-a" aria-hidden="true">은행</span>
+        <span class="map-poi poi-b" aria-hidden="true">병원</span>
+        <span class="map-poi poi-c" aria-hidden="true">주민센터</span>
 
         <header class="top-bar">
           <button class="icon-button" aria-label="현재 위치로 이동">
@@ -32,11 +47,8 @@
         </header>
 
         <div class="map-actions">
-          <div class="search-pill">
-            <span class="magnifier"></span>
-            <span id="visible-count">내 주변 영업 가능 건물 5개</span>
-          </div>
           <button class="recommend-button" id="recommend-button" type="button">
+            <span class="recommend-icon" aria-hidden="true"></span>
             추천 물건
           </button>
         </div>
@@ -145,6 +157,82 @@
         <div class="user-location" aria-label="내 위치"></div>
       </section>
 
+      <section class="product-detail-view is-hidden" id="product-detail-view" aria-label="솔라쉐어 상품 상세">
+        <div class="detail-hero">
+          <button class="detail-back" id="detail-back" type="button" aria-label="지도 화면으로 돌아가기"></button>
+          <p>사업자 · 임대주가 거절할 수 없는</p>
+          <h2>솔라쉐어 상품</h2>
+          <span>빈 지붕만 있다면 놓칠 수 없는 혜택, 상황에 맞게 제안해 보세요.</span>
+        </div>
+
+        <div class="detail-tabs" aria-label="솔라쉐어 상품 유형">
+          <button class="detail-tab active" type="button" data-detail-tab="rent">임대수익 받기</button>
+          <button class="detail-tab" type="button" data-detail-tab="power">태양광 전력 계약</button>
+        </div>
+
+        <div class="detail-panel active" data-panel="rent">
+          <div class="speech-bubble">빈 지붕으로 확실한 수익을 원한다면?</div>
+          <article class="product-card">
+            <div class="product-title-strip">
+              <p>사업자 · 임대주가 거절할 수 없는</p>
+              <h3>솔라쉐어 상품</h3>
+            </div>
+            <div class="detail-inline-tabs" aria-label="솔라쉐어 상품 유형">
+              <button class="detail-tab active" type="button" data-detail-tab="rent">임대수익 받기</button>
+              <button class="detail-tab" type="button" data-detail-tab="power">태양광 전력 계약</button>
+            </div>
+            <div class="product-banner rent-banner">
+              <strong>solar share 2.0</strong>
+            </div>
+            <p class="product-copy">
+              비어있는 건물의 지붕, 옥상을 빌려 지붕형 태양광 발전소를 설치하고 전력 판매를 통해
+              20년간 안정적인 임대 수익을 지급해요.
+            </p>
+            <ul class="benefit-list">
+              <li>kW당 8만원, 업계 최대 수준의 임대료 지급</li>
+              <li>투자비 0원, 목돈 필요 시 5년치 수익 선지급</li>
+              <li>국내 최대 에너지 플랫폼 모햇, 안정적인 수익 보장</li>
+            </ul>
+            <div class="fit-box">
+              <p>이런 임대주에게 적합해요!</p>
+              <span>빈 지붕으로 수익을 받고 싶은 임대주</span>
+              <span>안정적인 임대 수익이 필요한 임대주</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="detail-panel" data-panel="power">
+          <div class="speech-bubble">전기료 폭등이 무서운 사업주라면?</div>
+          <article class="product-card">
+            <div class="product-title-strip">
+              <p>사업자 · 임대주가 거절할 수 없는</p>
+              <h3>솔라쉐어 상품</h3>
+            </div>
+            <div class="detail-inline-tabs" aria-label="솔라쉐어 상품 유형">
+              <button class="detail-tab" type="button" data-detail-tab="rent">임대수익 받기</button>
+              <button class="detail-tab active" type="button" data-detail-tab="power">태양광 전력 계약</button>
+            </div>
+            <div class="product-banner power-banner">
+              <strong>solar share baro</strong>
+            </div>
+            <p class="product-copy">
+              사업장의 지붕에 태양광 발전소를 설치하고 생산된 태양광 전기를 직접 사용하여
+              전기요금을 절감해요.
+            </p>
+            <ul class="benefit-list">
+              <li>한전 대비 27.8% 저렴, 20년 동안 140원</li>
+              <li>투자비 0원, 20년간 인상 걱정 없는 고정 요금</li>
+              <li>ESG 경영의 핵심, RE100 이행 가능</li>
+            </ul>
+            <div class="fit-box">
+              <p>이런 사업주에게 적합해요!</p>
+              <span>RE100을 이행하고 싶은 사업주</span>
+              <span>전기요금이 부담되는 사업주</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="recommend-sheet is-hidden" id="recommend-sheet" aria-label="전국 산업단지 추천 물건 목록">
         <div class="sheet-handle"></div>
         <div class="recommend-heading">
@@ -211,7 +299,7 @@
         </div>
 
         <div class="sheet-actions" aria-label="선택 건물 작업">
-          <button class="sheet-action secondary" type="button">상세 정보</button>
+          <button class="sheet-action secondary" id="detail-open" type="button">상세 정보</button>
           <button class="sheet-action primary" type="button">제안서 요청</button>
         </div>
       </section>
