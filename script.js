@@ -22,6 +22,19 @@ const sheetFields = {
   insight: document.querySelector("#sheet-insight"),
 };
 
+const setActiveNav = (activeLabel) => {
+  navItems.forEach((navItem) => {
+    const isActive = navItem.textContent.trim() === activeLabel;
+    navItem.classList.toggle("active", isActive);
+
+    if (isActive) {
+      navItem.setAttribute("aria-current", "page");
+    } else {
+      navItem.removeAttribute("aria-current");
+    }
+  });
+};
+
 const showSheet = () => {
   bottomSheet.classList.remove("is-hidden");
 };
@@ -40,9 +53,18 @@ const hideRecommendSheet = () => {
   recommendSheet.classList.add("is-hidden");
 };
 
+const showDefaultMapSheet = () => {
+  const defaultMarker = markers.find((marker) => !marker.classList.contains("is-hidden")) || markers[0];
+
+  if (defaultMarker) {
+    selectMarker(defaultMarker);
+  }
+};
+
 const showProductDetail = () => {
   hideSheet();
   hideRecommendSheet();
+  setActiveNav("상품");
   appShell.classList.add("detail-mode");
   productDetailView.classList.remove("is-hidden");
   document.documentElement.scrollTop = 0;
@@ -59,9 +81,11 @@ const showProductDetail = () => {
 const hideProductDetail = () => {
   productDetailView.classList.add("is-hidden");
   appShell.classList.remove("detail-mode");
+  setActiveNav("물건");
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   appShell.scrollTop = 0;
+  showDefaultMapSheet();
 };
 
 const switchDetailTab = (tabName) => {
@@ -159,19 +183,21 @@ detailTabs.forEach((tab) => {
 
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
-    navItems.forEach((navItem) => {
-      navItem.classList.toggle("active", navItem === item);
-      if (navItem === item) {
-        navItem.setAttribute("aria-current", "page");
-      } else {
-        navItem.removeAttribute("aria-current");
-      }
-    });
+    const navLabel = item.textContent.trim();
 
-    if (item.textContent.trim() === "물건") {
-      item.blur();
-      setTimeout(showProductDetail, 0);
+    item.blur();
+
+    if (navLabel === "물건") {
+      hideProductDetail();
+      return;
     }
+
+    if (navLabel === "상품") {
+      setTimeout(showProductDetail, 0);
+      return;
+    }
+
+    setActiveNav(navLabel);
   });
 });
 

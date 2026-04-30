@@ -59,7 +59,7 @@ button {
 
 .map-view {
   position: relative;
-  min-height: 66svh;
+  min-height: calc(100svh - 72px);
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(239, 149, 92, 0.16) 0 10px, transparent 10px 42px) 18px 28px / 96px 76px,
@@ -448,7 +448,7 @@ button {
   position: absolute;
   z-index: 2;
   left: var(--x);
-  top: var(--y);
+  top: calc(var(--y) + 5%);
   display: grid;
   min-width: 112px;
   gap: 2px;
