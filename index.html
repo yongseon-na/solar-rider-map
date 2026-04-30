@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>솔라핏 - 주변 태양광 가능 건물</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="내 주변 태양광 발전소 가능 건물">
+      <section class="map-view">
+        <div class="map-grid" aria-hidden="true"></div>
+        <div class="road road-main"></div>
+        <div class="road road-sub"></div>
+        <div class="park"></div>
+        <div class="block block-a"></div>
+        <div class="block block-b"></div>
+        <div class="block block-c"></div>
+        <div class="block block-d"></div>
+
+        <header class="top-bar">
+          <button class="icon-button" aria-label="현재 위치로 이동">
+            <span class="icon target"></span>
+          </button>
+          <div class="location-copy">
+            <span>현재 위치 기준</span>
+            <strong>서울 강남구 테헤란로 인근</strong>
+          </div>
+          <button class="icon-button" aria-label="필터 열기">
+            <span class="icon sliders"></span>
+          </button>
+        </header>
+
+        <div class="map-actions">
+          <div class="search-pill">
+            <span class="magnifier"></span>
+            <span id="visible-count">내 주변 영업 가능 건물 5개</span>
+          </div>
+          <button class="recommend-button" id="recommend-button" type="button">
+            추천 물건
+          </button>
+        </div>
+
+        <aside class="filter-rail" aria-label="인센티브 필터">
+          <span class="incentive-icon filter-icon" aria-hidden="true"></span>
+          <input
+            id="incentive-filter"
+            class="vertical-slider"
+            type="range"
+            min="0"
+            max="600"
+            step="50"
+            value="0"
+            aria-label="최소 인센티브 금액"
+          />
+          <span class="filter-dot top" aria-hidden="true"></span>
+          <span class="filter-dot bottom" aria-hidden="true"></span>
+        </aside>
+
+        <button
+          class="map-marker selected"
+          style="--x: 48%; --y: 42%"
+          aria-label="선택된 건물: 테헤란 128 빌딩"
+          data-name="테헤란 128 빌딩"
+          data-address="서울 강남구 테헤란로 128"
+          data-capacity="312kW"
+          data-revenue="월 248만원"
+          data-incentive="420만원"
+          data-incentive-value="420"
+          data-insight="옥상 면적과 일사량 기준으로 주변 건물 중 수익성이 높은 편입니다."
+          data-distance="0m"
+        >
+          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>420만원</span>
+          <span class="capacity">312kW</span>
+          <span class="revenue">임대수익 월 248만원</span>
+        </button>
+        <button
+          class="map-marker"
+          style="--x: 37%; --y: 32%"
+          aria-label="강남 루프탑 타워"
+          data-name="강남 루프탑 타워"
+          data-address="서울 강남구 봉은사로 24"
+          data-capacity="180kW"
+          data-revenue="월 146만원"
+          data-incentive="310만원"
+          data-incentive-value="310"
+          data-insight="접근성이 좋아 초기 상담 전환 가능성이 높은 후보입니다."
+          data-distance="320m"
+        >
+          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>310만원</span>
+          <span class="capacity">180kW</span>
+          <span class="revenue">임대수익 월 146만원</span>
+        </button>
+        <button
+          class="map-marker compact"
+          style="--x: 71%; --y: 30%"
+          aria-label="역삼 오피스"
+          data-name="역삼 오피스"
+          data-address="서울 강남구 논현로 512"
+          data-capacity="225kW"
+          data-revenue="월 172만원"
+          data-incentive="260만원"
+          data-incentive-value="260"
+          data-insight="발전용량 대비 안정적인 임대수익이 예상됩니다."
+          data-distance="440m"
+        >
+          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>260만원</span>
+          <span class="capacity">225kW</span>
+          <span class="revenue">임대수익 월 172만원</span>
+        </button>
+        <button
+          class="map-marker compact"
+          style="--x: 68%; --y: 58%"
+          aria-label="선릉 물류센터"
+          data-name="선릉 물류센터"
+          data-address="서울 강남구 선릉로 422"
+          data-capacity="410kW"
+          data-revenue="월 331만원"
+          data-incentive="580만원"
+          data-incentive-value="580"
+          data-insight="대형 지붕 면적으로 발전용량과 인센티브 모두 높은 후보입니다."
+          data-distance="580m"
+        >
+          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>580만원</span>
+          <span class="capacity">410kW</span>
+          <span class="revenue">임대수익 월 331만원</span>
+        </button>
+        <button
+          class="map-marker mini"
+          style="--x: 38%; --y: 63%"
+          aria-label="소형 건물 95kW"
+          data-name="역삼 소형 상가"
+          data-address="서울 강남구 역삼로 88"
+          data-capacity="95kW"
+          data-revenue="월 72만원"
+          data-incentive="120만원"
+          data-incentive-value="120"
+          data-insight="소규모 설치로 빠른 의사결정을 기대할 수 있는 후보입니다."
+          data-distance="610m"
+        >
+          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>120만원</span>
+          <span>95kW</span>
+        </button>
+
+        <div class="user-location" aria-label="내 위치"></div>
+      </section>
+
+      <section class="recommend-sheet is-hidden" id="recommend-sheet" aria-label="전국 산업단지 추천 물건 목록">
+        <div class="sheet-handle"></div>
+        <div class="recommend-heading">
+          <div>
+            <p class="eyebrow">추천 물건</p>
+            <h2>전국 산업단지</h2>
+          </div>
+          <button class="sheet-close" id="recommend-close" type="button" aria-label="추천 목록 닫기"></button>
+        </div>
+
+        <div class="park-list">
+          <article class="park-card">
+            <strong>시화국가산업단지</strong>
+            <span>물건 84개</span>
+            <b>예상 인센티브 총액 31.8억원</b>
+          </article>
+          <article class="park-card">
+            <strong>반월국가산업단지</strong>
+            <span>물건 67개</span>
+            <b>예상 인센티브 총액 24.6억원</b>
+          </article>
+          <article class="park-card">
+            <strong>구미국가산업단지</strong>
+            <span>물건 52개</span>
+            <b>예상 인센티브 총액 18.9억원</b>
+          </article>
+          <article class="park-card">
+            <strong>창원국가산업단지</strong>
+            <span>물건 41개</span>
+            <b>예상 인센티브 총액 15.2억원</b>
+          </article>
+        </div>
+      </section>
+
+      <section class="bottom-sheet" aria-label="선택 건물 상세 정보">
+        <div class="sheet-handle"></div>
+        <div class="building-heading">
+          <div>
+            <p class="eyebrow">영업 가능 건물</p>
+            <h1 id="sheet-name">테헤란 128 빌딩</h1>
+            <address id="sheet-address">서울 강남구 테헤란로 128</address>
+          </div>
+          <span class="match-score">추천</span>
+        </div>
+
+        <div class="metric-row" aria-label="발전소 예상 지표">
+          <article class="metric">
+            <span>발전용량</span>
+            <strong id="sheet-capacity">312kW</strong>
+          </article>
+          <article class="metric">
+            <span>예상 임대수익</span>
+            <strong id="sheet-revenue">월 248만원</strong>
+          </article>
+          <article class="metric accent">
+            <span>사용자 인센티브</span>
+            <strong id="sheet-incentive">420만원</strong>
+          </article>
+        </div>
+
+        <div class="insight-strip">
+          <span class="sun-icon"></span>
+          <p id="sheet-insight">옥상 면적과 일사량 기준으로 주변 건물 중 수익성이 높은 편입니다.</p>
+        </div>
+
+        <div class="sheet-actions" aria-label="선택 건물 작업">
+          <button class="sheet-action secondary" type="button">상세 정보</button>
+          <button class="sheet-action primary" type="button">제안서 요청</button>
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="하단 메뉴">
+        <button class="nav-item active" type="button" aria-current="page">
+          <span class="nav-icon building-icon" aria-hidden="true"></span>
+          <span>물건</span>
+        </button>
+        <button class="nav-item" type="button">
+          <span class="nav-icon product-icon" aria-hidden="true"></span>
+          <span>상품</span>
+        </button>
+        <button class="nav-item" type="button">
+          <span class="nav-icon profile-icon" aria-hidden="true"></span>
+          <span>내정보</span>
+        </button>
+      </nav>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
