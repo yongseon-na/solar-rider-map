@@ -46,6 +46,11 @@ const hideSheet = () => {
 
 const showRecommendSheet = () => {
   hideSheet();
+  productDetailView.classList.add("is-hidden");
+  appShell.classList.remove("detail-mode");
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  recommendSheet.scrollTo({ top: 0, left: 0 });
   recommendSheet.classList.remove("is-hidden");
 };
 
@@ -170,6 +175,7 @@ recommendButton.addEventListener("click", (event) => {
 
 recommendClose.addEventListener("click", () => {
   hideRecommendSheet();
+  showDefaultMapSheet();
 });
 
 detailOpen.addEventListener("click", showProductDetail);
@@ -188,15 +194,18 @@ navItems.forEach((item) => {
     item.blur();
 
     if (navLabel === "물건") {
+      hideRecommendSheet();
       hideProductDetail();
       return;
     }
 
     if (navLabel === "상품") {
+      hideRecommendSheet();
       setTimeout(showProductDetail, 0);
       return;
     }
 
+    hideRecommendSheet();
     setActiveNav(navLabel);
   });
 });
