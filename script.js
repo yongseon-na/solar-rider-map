@@ -1,11 +1,16 @@
 const mapView = document.querySelector(".map-view");
+const appShell = document.querySelector(".app-shell");
 const bottomSheet = document.querySelector(".bottom-sheet");
 const recommendSheet = document.querySelector("#recommend-sheet");
 const recommendButton = document.querySelector("#recommend-button");
 const recommendClose = document.querySelector("#recommend-close");
+const productDetailView = document.querySelector("#product-detail-view");
+const detailBack = document.querySelector("#detail-back");
+const detailOpen = document.querySelector("#detail-open");
+const detailTabs = [...document.querySelectorAll(".detail-tab")];
+const detailPanels = [...document.querySelectorAll(".detail-panel")];
 const markers = [...document.querySelectorAll(".map-marker")];
 const incentiveFilter = document.querySelector("#incentive-filter");
-const visibleCount = document.querySelector("#visible-count");
 const navItems = [...document.querySelectorAll(".nav-item")];
 
 const sheetFields = {
@@ -33,6 +38,40 @@ const showRecommendSheet = () => {
 
 const hideRecommendSheet = () => {
   recommendSheet.classList.add("is-hidden");
+};
+
+const showProductDetail = () => {
+  hideSheet();
+  hideRecommendSheet();
+  appShell.classList.add("detail-mode");
+  productDetailView.classList.remove("is-hidden");
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  productDetailView.scrollTo({ top: 0, left: 0 });
+  requestAnimationFrame(() => {
+    productDetailView.scrollTo({ top: 0, left: 0 });
+  });
+  setTimeout(() => {
+    productDetailView.scrollTo({ top: 0, left: 0 });
+  }, 80);
+};
+
+const hideProductDetail = () => {
+  productDetailView.classList.add("is-hidden");
+  appShell.classList.remove("detail-mode");
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  appShell.scrollTop = 0;
+};
+
+const switchDetailTab = (tabName) => {
+  detailTabs.forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.detailTab === tabName);
+  });
+
+  detailPanels.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.panel === tabName);
+  });
 };
 
 const updateSheet = (marker) => {
@@ -68,8 +107,6 @@ const applyIncentiveFilter = () => {
       selectedMarkerStillVisible = true;
     }
   });
-
-  visibleCount.textContent = `내 주변 영업 가능 건물 ${count}개`;
 
   if (!selectedMarkerStillVisible) {
     hideSheet();
@@ -111,6 +148,15 @@ recommendClose.addEventListener("click", () => {
   hideRecommendSheet();
 });
 
+detailOpen.addEventListener("click", showProductDetail);
+detailBack.addEventListener("click", hideProductDetail);
+
+detailTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    switchDetailTab(tab.dataset.detailTab);
+  });
+});
+
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
     navItems.forEach((navItem) => {
@@ -121,6 +167,11 @@ navItems.forEach((item) => {
         navItem.removeAttribute("aria-current");
       }
     });
+
+    if (item.textContent.trim() === "물건") {
+      item.blur();
+      setTimeout(showProductDetail, 0);
+    }
   });
 });
 
