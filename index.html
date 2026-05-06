@@ -13,6 +13,7 @@
         <div class="road road-main"></div>
         <div class="road road-sub"></div>
         <div class="park"></div>
+        <div class="waterway" aria-hidden="true"></div>
         <div class="block block-a"></div>
         <div class="block block-b"></div>
         <div class="block block-c"></div>
@@ -26,12 +27,15 @@
         <span class="station-dot station-dot-c" aria-hidden="true">3</span>
         <span class="map-label label-a" aria-hidden="true">논현2동</span>
         <span class="map-label label-b" aria-hidden="true">선정릉</span>
-        <span class="map-label label-c" aria-hidden="true">라온제나</span>
+        <span class="map-label label-c" aria-hidden="true">봉은사로</span>
         <span class="map-label label-d" aria-hidden="true">강남구보건소</span>
         <span class="map-label label-e" aria-hidden="true">논현초나무공원</span>
+        <span class="map-label label-f" aria-hidden="true">테헤란로</span>
+        <span class="map-label label-g" aria-hidden="true">역삼역</span>
         <span class="map-poi poi-a" aria-hidden="true">은행</span>
         <span class="map-poi poi-b" aria-hidden="true">병원</span>
         <span class="map-poi poi-c" aria-hidden="true">주민센터</span>
+        <span class="map-poi poi-d" aria-hidden="true">공원</span>
 
         <header class="top-bar">
           <button class="icon-button" aria-label="현재 위치로 이동">
@@ -71,7 +75,7 @@
 
         <button
           class="map-marker selected"
-          style="--x: 48%; --y: 42%"
+          style="--x: 45%; --y: 47%"
           aria-label="선택된 건물: 테헤란 128 빌딩"
           data-name="테헤란 128 빌딩"
           data-address="서울 강남구 테헤란로 128"
@@ -82,13 +86,13 @@
           data-insight="옥상 면적과 일사량 기준으로 주변 건물 중 수익성이 높은 편입니다."
           data-distance="0m"
         >
-          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>420만원</span>
-          <span class="capacity">312kW</span>
+          <span class="bonus"><span>예상인센티브</span><strong>420만원</strong></span>
           <span class="revenue">임대수익 월 248만원</span>
+          <span class="capacity"><span class="incentive-icon" aria-hidden="true"></span>발전용량 312kW</span>
         </button>
         <button
-          class="map-marker"
-          style="--x: 37%; --y: 32%"
+          class="map-marker marker-amber"
+          style="--x: 30%; --y: 31%"
           aria-label="강남 루프탑 타워"
           data-name="강남 루프탑 타워"
           data-address="서울 강남구 봉은사로 24"
@@ -99,13 +103,13 @@
           data-insight="접근성이 좋아 초기 상담 전환 가능성이 높은 후보입니다."
           data-distance="320m"
         >
-          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>310만원</span>
-          <span class="capacity">180kW</span>
+          <span class="bonus"><span>예상인센티브</span><strong>310만원</strong></span>
           <span class="revenue">임대수익 월 146만원</span>
+          <span class="capacity"><span class="incentive-icon" aria-hidden="true"></span>발전용량 180kW</span>
         </button>
         <button
-          class="map-marker compact"
-          style="--x: 71%; --y: 30%"
+          class="map-marker compact marker-coral"
+          style="--x: 73%; --y: 32%"
           aria-label="역삼 오피스"
           data-name="역삼 오피스"
           data-address="서울 강남구 논현로 512"
@@ -116,13 +120,13 @@
           data-insight="발전용량 대비 안정적인 임대수익이 예상됩니다."
           data-distance="440m"
         >
-          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>260만원</span>
-          <span class="capacity">225kW</span>
+          <span class="bonus"><span>예상인센티브</span><strong>260만원</strong></span>
           <span class="revenue">임대수익 월 172만원</span>
+          <span class="capacity"><span class="incentive-icon" aria-hidden="true"></span>발전용량 225kW</span>
         </button>
         <button
           class="map-marker compact"
-          style="--x: 68%; --y: 58%"
+          style="--x: 69%; --y: 56%"
           aria-label="선릉 물류센터"
           data-name="선릉 물류센터"
           data-address="서울 강남구 선릉로 422"
@@ -133,13 +137,13 @@
           data-insight="대형 지붕 면적으로 발전용량과 인센티브 모두 높은 후보입니다."
           data-distance="580m"
         >
-          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>580만원</span>
-          <span class="capacity">410kW</span>
+          <span class="bonus"><span>예상인센티브</span><strong>580만원</strong></span>
           <span class="revenue">임대수익 월 331만원</span>
+          <span class="capacity"><span class="incentive-icon" aria-hidden="true"></span>발전용량 410kW</span>
         </button>
         <button
-          class="map-marker mini"
-          style="--x: 38%; --y: 63%"
+          class="map-marker compact marker-coral"
+          style="--x: 31%; --y: 61%"
           aria-label="소형 건물 95kW"
           data-name="역삼 소형 상가"
           data-address="서울 강남구 역삼로 88"
@@ -150,8 +154,9 @@
           data-insight="소규모 설치로 빠른 의사결정을 기대할 수 있는 후보입니다."
           data-distance="610m"
         >
-          <span class="bonus"><span class="incentive-icon" aria-hidden="true"></span>120만원</span>
-          <span>95kW</span>
+          <span class="bonus"><span>예상인센티브</span><strong>120만원</strong></span>
+          <span class="revenue">임대수익 월 72만원</span>
+          <span class="capacity"><span class="incentive-icon" aria-hidden="true"></span>발전용량 95kW</span>
         </button>
 
         <div class="user-location" aria-label="내 위치"></div>
